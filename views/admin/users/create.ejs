@@ -1,0 +1,23 @@
+<%- include('../../partials/header') %>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center mt-5">
+            <div class="card mt-3 text-white bg-dark pr-5 pl-5" style="width: 100%; max-width: 30em;">
+                <div class="card-header">
+                    <div class="d-flex justify-content-center">
+                        <h2> Criação de usuário </h2>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form action="/users/create" method="POST">
+                        <input type="email" name="email" class="form-control" placeholder="Digite seu email">
+                        <input type="password" class="form-control mt-1" name="password" id="" placeholder="Digite sua senha">
+                        <button type="submit" class="btn btn-sucess btn-block mt-2">Criar</button>
+                        <a href="/login" class="btn-block forLinks" >Já tem uma conta? Faça login</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include('../../partials/footer') %>

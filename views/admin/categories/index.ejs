@@ -1,0 +1,58 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navbar') %>
+
+<div class="container">
+    <div class="d-flex justify-content-between mt-5">
+        <div class="d-flex align-items-center">
+            <h2>Categorias</h2>
+        </div>
+        <div class="d-flex align-items-center">
+            <a class="btn btn-dark mb-3" href="/admin/categories/new">Criar nova categoria</a>
+        </div>
+    </div>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Slug</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% categories.forEach(category => { %>
+                <tr>
+                    <th><%= category.id %></th>
+                    <th><%= category.title %></th>
+                    <th><%= category.slug %></th>
+                    <th>
+                        <div class="d-flex justify-content-around">
+                            <div class="d-flex align-items-center">
+                                <a href="/admin/categories/edit/<%= category.id %>" class="btn btn-warning">Editar</a>
+                            </div>
+                            <div class="d-flex"></div>
+                            <div class="d-flex align-items-center">
+                                <form action="/categories/delete" method="POST" onsubmit="confirmarDeletar(event, this)">
+                                    <input type="hidden" name="id" value="<%= category.id %>">
+                                    <button class="btn btn-danger">Deletar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include('../../partials/footer') %>
+<script>
+    function confirmarDeletar(event, form) {
+        event.preventDefault()
+        var decision = confirm("Você quer deletar essa categoria?")
+        if (decision) {
+            form.submit()
+        }
+    }
+</script>

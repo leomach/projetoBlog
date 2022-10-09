@@ -1,0 +1,8 @@
+.forLinks {
+    text-decoration: none;
+    color: white;
+}
+
+:hover.forLinks {
+    color: rgb(214, 201, 185);
+}
